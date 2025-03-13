@@ -38,29 +38,12 @@ export default function getReviewProduct(
       );
 
 
-      const {offers} = product
 
       if (!resume) return product;
       const aggregateRating = toAggregateRating(resume);
 
-      const productOffers = offers?.offers.map((offer) => {
-        const unitPriceUpdated = offer.priceSpecification.map((item) => ({...item,priceCurrency:"BRL"} as UnitPriceSpecification)) 
-
-        return ({
-          ...offer,
-          priceCurrency:"BRL",
-          priceSpecification:unitPriceUpdated
-        }) as Offer 
-
-      })  ?? []
-      
-
       return {
         ...product,
-        offers: product.offers ? {
-          ...product.offers,
-          offers: productOffers
-        } : undefined,
         isVariantOf: product.isVariantOf
           ? {
             ...product.isVariantOf,
