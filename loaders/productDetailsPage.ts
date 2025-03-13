@@ -10,6 +10,7 @@ export interface Props {
 /**
  * @title Yourviews
  */
+
 export default function getReviewProduct(
   props: Props,
   _req: Request,
